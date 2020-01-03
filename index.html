@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Day Planner</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="index.css" />
+    <!-- Added link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <!--Nav bar on top as a header -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/calendar.jpg" alt="" height="40px" width="40px" id="auth-image" />
+                Day Planner
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/Ethanlloyd21/Code-Quiz"><img
+                                src="https://icon-library.net/images/github-icon-png/github-icon-png-29.jpg" alt=""
+                                height="32" width="32" />
+                            Github</a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="https://momentjs.com/">Moment.js <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Body-->
+    <div class="container">
+        <div id="intro"></div>
+
+        <div class="scrollDate">
+            <div id="previous"></div>
+            <div id="date"></div>
+            <div id="next"></div>
+        </div>
+
+        <hr>
+        <table border="0">
+            <tbody>
+                <tr>
+                    <td id="timeFrame-9"></td>
+                    <td>
+                        <textarea rows="3" id="event1"></textarea>
+                    </td>
+                    <td id="toSave">Save</td>
+                </tr>
+                <tr>
+                    <td id="timeFrame-10"></td>
+                    <td>
+                        <textarea rows="3" id="event2"></textarea>
+                    </td>
+                    <td id="toSave">Save</td>
+                </tr>
+                <tr>
+                    <td id="timeFrame-11"></td>
+                    <td>
+                        <textarea rows="3" id="event3"></textarea>
+                    </td>
+                    <td id="toSave">Save</td>
+                </tr>
+                <tr>
+                    <td id="timeFrame-12"></td>
+                    <td>
+                        <textarea rows="3" id="event4"></textarea>
+                    </td>
+                    <td id="toSave">Save</td>
+                </tr>
+                <tr>
+                    <td id="timeFrame-13"></td>
+                    <td>
+                        <textarea rows="3" id="event5"></textarea>
+                    </td>
+                    <td id="toSave">Save</td>
+                </tr>
+                <tr>
+                    <td id="timeFrame-14"></td>
+                    <td>
+                        <textarea rows="3" id="event6"></textarea>
+                    </td>
+                    <td id="toSave">Save</td>
+                </tr>
+                <tr>
+                    <td id="timeFrame-15"></td>
+                    <td>
+                        <textarea rows="3" id="event7"></textarea>
+                    </td>
+                    <td id="toSave">Save</td>
+                </tr>
+                <tr>
+                    <td id="timeFrame-16"></td>
+                    <td>
+                        <textarea rows="3" id="event8"></textarea>
+                    </td>
+                    <td id="toSave">Save</td>
+                </tr>
+                <tr>
+                    <td id="timeFrame-17"></td>
+                    <td>
+                        <textarea rows="3" id="event9"></textarea>
+                    </td>
+                    <td id="toSave">Save</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+
+    </div>
+
+    <!-- Moment.js CDN-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+    <!-- JavaScript-->
+    <script src="index.js"></script>
+
+    <!-- jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JavaScript CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
