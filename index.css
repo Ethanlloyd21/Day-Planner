@@ -33,8 +33,7 @@ td {
     height: auto;
     border: none;
     color: #28a1c5;
-    font-style: oblique;
-    font-size: smaller;
+    font-weight: 400;
     padding: 10px;
     
 }

@@ -76,7 +76,6 @@ previousElement.addEventListener('click', function () {
     if (currentDate === moment().format('LL')) {
         currentDate = moment().subtract(1, 'days').format('LL');
         dateElement.innerHTML = currentDate;
-
     }
     else {
         currentDate = moment(currentDate).subtract(1, 'days').format('LL');
@@ -93,12 +92,10 @@ nextElement.addEventListener('click', function () {
     if (currentDate === moment().format('LL')) {
         currentDate = moment().add(1, 'days').format('LL');
         dateElement.innerHTML = currentDate;
-
     }
     else {
         currentDate = moment(currentDate).add(1, 'days').format('LL');
         dateElement.innerHTML = currentDate;
-
     }
     //dims the div if the date is less than the current date
     dimDiv();
@@ -197,13 +194,13 @@ function opacNormal(time, textA, save) {
 }
 
 function clearInput() {
-    timeElement9.value = "";
-    timeElement10.value = "";
-    timeElement11.value = "";
-    timeElement12.value = "";
-    timeElement13.value = "";
-    timeElement14.value = "";
-    timeElement15.value = "";
-    timeElement16.value = "";
-    timeElement17.value = "";
+    eventElement9.innerHTML = (eventElement9.value = '');
+    eventElement10.innerHTML = (eventElement10.value = '');
+    eventElement11.innerHTML = (eventElement11.value = '');
+    eventElement12.innerHTML = (eventElement12.value = '');
+    eventElement13.innerHTML = (eventElement13.value = '');
+    eventElement14.innerHTML = (eventElement14.value = '');
+    eventElement15.innerHTML = (eventElement15.value = '');
+    eventElement16.innerHTML = (eventElement16.value = '');
+    eventElement17.innerHTML = (eventElement17.value = '');
 }
