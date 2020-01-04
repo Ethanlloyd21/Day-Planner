@@ -15,11 +15,11 @@ var eventElement9 = document.getElementById('event1');
 var eventElement10 = document.getElementById('event2');
 var eventElement11 = document.getElementById('event3');
 var eventElement12 = document.getElementById('event4');
-var eventElement1 = document.getElementById('event5');
-var eventElement2 = document.getElementById('event6');
-var eventElement3 = document.getElementById('event7');
-var eventElement4 = document.getElementById('event8');
-var eventElement5 = document.getElementById('event9');
+var eventElement13 = document.getElementById('event5');
+var eventElement14 = document.getElementById('event6');
+var eventElement15 = document.getElementById('event7');
+var eventElement16 = document.getElementById('event8');
+var eventElement17 = document.getElementById('event9');
 
 
 
@@ -33,15 +33,15 @@ introElement.innerHTML = "Work Day Planner";
 previousElement.innerHTML = "&#8249;";
 nextElement.innerHTML = "&#8250;";
 
-timeElement9.value = "09";
-timeElement10.value = "10";
-timeElement11.value = "11";
-timeElement12.value = "12";
-timeElement13.value = "13";
-timeElement14.value = "14";
-timeElement15.value = "15";
-timeElement16.value = "16";
-timeElement17.value = "17";
+timeElement9.value = 9;
+timeElement10.value = 10;
+timeElement11.value = 11;
+timeElement12.value = 12;
+timeElement13.value = 13;
+timeElement14.value = 14;
+timeElement15.value = 15;
+timeElement16.value = 16;
+timeElement17.value = 17;
 
 timeElement9.innerHTML = parseInt(timeElement9.value) + "am";
 timeElement10.innerHTML = timeElement10.value + "am";
@@ -56,6 +56,7 @@ timeElement17.innerHTML = timeElement17.value - 12 + "pm";
 
 
 var currentDate = moment().format('LL');
+const dateCons = moment().format('LL');
 dateElement.innerHTML = currentDate;
 console.log(currentDate);
 
@@ -70,7 +71,20 @@ previousElement.addEventListener('click', function () {
         currentDate = moment(currentDate).subtract(1, 'days').format('LL');
         dateElement.innerHTML = currentDate;
     }
+
+
+    if (currentDate === moment().format('LL')) {
+        timePassed();
+    }
+    else {
+        checkIfPassed();
+    }
+
     console.log(currentDate);
+    console.log(currentDate === moment().format('LL'));
+    console.log(currentDate > moment().format('LL'));
+
+
 });
 
 nextElement.addEventListener('click', function () {
@@ -85,37 +99,86 @@ nextElement.addEventListener('click', function () {
         dateElement.innerHTML = currentDate;
 
     }
+
+
+    if (currentDate === moment().format('LL')) {
+        timePassed();
+    }
+    else {
+        checkIfPassed();
+    }
+
     console.log(currentDate);
+    console.log(currentDate === moment().format('LL'));
+    console.log(currentDate > moment().format('LL'));
 });
 
 
 
 var timeNow = moment().format('H');
 
-if (timeNow > timeElement9.value) {
-    eventElement9.style.backgroundColor = "#D3D3D3";
+var num = 3;
+console.log(timeNow);
+console.log(timeNow < 10);
+console.log(moment().format('L'));
+console.log(moment().format('L').split('/'));
+
+var currentDateArray = moment().format('L').split('/');
+console.log(currentDateArray);
+console.log(currentDate);
+
+if (currentDate === moment().format('LL')) {
+    timePassed();
 }
-if (timeNow > timeElement10.value) {
-    eventElement10.style.backgroundColor = "#D3D3D3";
+
+function checkIfPassed() {
+    if (currentDate < moment().format('LL')) {
+        opac(timeElement9, eventElement9, toSaveElement);
+        opac(timeElement10, eventElement10, toSaveElement);
+        opac(timeElement11, eventElement11, toSaveElement);
+        opac(timeElement12, eventElement12, toSaveElement);
+        opac(timeElement13, eventElement13, toSaveElement);
+        opac(timeElement14, eventElement14, toSaveElement);
+        opac(timeElement15, eventElement15, toSaveElement);
+        opac(timeElement16, eventElement16, toSaveElement);
+        opac(timeElement17, eventElement17, toSaveElement);
+    }
 }
-if (timeNow > timeElement11.value) {
-    eventElement11.style.backgroundColor = "#D3D3D3";
+
+function timePassed() {
+    if (timeNow > timeElement9.value) {
+        opac(timeElement9, eventElement9, toSaveElement);
+    }
+    if (timeNow > timeElement10.value) {
+        opac(timeElement10, eventElement10, toSaveElement);
+    }
+    if (timeNow > timeElement11.value) {
+        opac(timeElement11, eventElement11, toSaveElement);
+    }
+    if (timeNow > timeElement12.value) {
+        opac(timeElement12, eventElement12, toSaveElement);
+    }
+    if (timeNow > timeElement13.value) {
+        opac(timeElement13, eventElement13, toSaveElement);
+    }
+    if (timeNow > timeElement14.value) {
+        opac(timeElement14, eventElement14, toSaveElement);
+    }
+    if (timeNow > timeElement15.value) {
+        opac(timeElement15, eventElement15, toSaveElement);
+    }
+    if (timeNow > timeElement16.value) {
+        opac(timeElement16, eventElement16, toSaveElement);
+    }
+    if (timeNow > timeElement17.value) {
+        opac(timeElement17, eventElement17, toSaveElement);
+    }
 }
-if (timeNow > timeElement12.value) {
-    eventElement12.style.backgroundColor = "#D3D3D3";
-}
-if (timeNow > timeElement13.value) {
-    eventElement1.style.backgroundColor = "#D3D3D3";
-}
-if (timeNow > timeElement14.value) {
-    eventElement2.style.backgroundColor = "#D3D3D3";
-}
-if (timeNow > timeElement15.value) {
-    eventElement3.style.backgroundColor = "#D3D3D3";
-}
-if (timeNow > timeElement16.value) {
-    eventElement4.style.backgroundColor = "#D3D3D3";
-}
-if (timeNow > timeElement17.value) {
-    eventElement5.style.backgroundColor = "#D3D3D3";
+
+//function that dims the div and id.
+function opac(time, textA, save) {
+    textA.style.backgroundColor = "#D3D3D3";
+    textA.style.opacity = 0.3;
+    time.style.opacity = 0.3;
+    save.style.opacity = 0.3;
 }
