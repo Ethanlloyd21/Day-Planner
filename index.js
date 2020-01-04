@@ -21,11 +21,30 @@ var eventElement14 = document.getElementById('event6');
 var eventElement15 = document.getElementById('event7');
 var eventElement16 = document.getElementById('event8');
 var eventElement17 = document.getElementById('event9');
-//variables for the save buttons
-var toSaveElement = document.getElementById('toSave');
+//variables for the timemin buttons
+var timeminsecElement9 = document.getElementById('timeminsec9');
+var timeminsecElement10 = document.getElementById('timeminsec10');
+var timeminsecElement11 = document.getElementById('timeminsec11');
+var timeminsecElement12 = document.getElementById('timeminsec12');
+var timeminsecElement13 = document.getElementById('timeminsec13');
+var timeminsecElement14 = document.getElementById('timeminsec14');
+var timeminsecElement15 = document.getElementById('timeminsec15');
+var timeminsecElement16 = document.getElementById('timeminsec16');
+var timeminsecElement17 = document.getElementById('timeminsec17');
+
+
 //variables for the arrow buttons
 var previousElement = document.getElementById('previous');
 var nextElement = document.getElementById('next');
+
+//variables for current date and save buttons
+var dateNow = document.getElementById('current');
+var saveNow = document.getElementById('savebutton');
+
+//button to go back to the current day
+dateNow.addEventListener('click', function () {
+    location.reload()
+});
 
 //prints out the intro and the arrow buttons
 introElement.innerHTML = "Work Day Planner";
@@ -81,9 +100,10 @@ previousElement.addEventListener('click', function () {
         currentDate = moment(currentDate).subtract(1, 'days').format('LL');
         dateElement.innerHTML = currentDate;
     }
+    //clear text on the textArea
+    clearInput();
     //dims the div if the date is less than the current date
     dimDiv();
-    clearInput();
 });
 
 //next button
@@ -97,9 +117,10 @@ nextElement.addEventListener('click', function () {
         currentDate = moment(currentDate).add(1, 'days').format('LL');
         dateElement.innerHTML = currentDate;
     }
+    //clear text on the textArea
+    clearInput();
     //dims the div if the date is less than the current date
     dimDiv();
-    clearInput();
 });
 
 
@@ -109,6 +130,7 @@ var currentDateArray = moment().format('L').split('/');
 function dimDiv() {
     if (currentDate === dateCons) {
         timePassed();
+        showTime();
     }
     else if (currentDate > dateCons) {
         futureDate();
@@ -121,76 +143,77 @@ function dimDiv() {
 //dim previous dates
 function pastDate() {
 
-    opac(timeElement9, eventElement9, toSaveElement);
-    opac(timeElement10, eventElement10, toSaveElement);
-    opac(timeElement11, eventElement11, toSaveElement);
-    opac(timeElement12, eventElement12, toSaveElement);
-    opac(timeElement13, eventElement13, toSaveElement);
-    opac(timeElement14, eventElement14, toSaveElement);
-    opac(timeElement15, eventElement15, toSaveElement);
-    opac(timeElement16, eventElement16, toSaveElement);
-    opac(timeElement17, eventElement17, toSaveElement);
+    opac(timeElement9, eventElement9, timeminsecElement9);
+    opac(timeElement10, eventElement10, timeminsecElement10);
+    opac(timeElement11, eventElement11, timeminsecElement11);
+    opac(timeElement12, eventElement12, timeminsecElement12);
+    opac(timeElement13, eventElement13, timeminsecElement13);
+    opac(timeElement14, eventElement14, timeminsecElement14);
+    opac(timeElement15, eventElement15, timeminsecElement15);
+    opac(timeElement16, eventElement16, timeminsecElement16);
+    opac(timeElement17, eventElement17, timeminsecElement17);
 
 }
 
 //restores div for the future dates
 function futureDate() {
-    opacNormal(timeElement9, eventElement9, toSaveElement);
-    opacNormal(timeElement10, eventElement10, toSaveElement);
-    opacNormal(timeElement11, eventElement11, toSaveElement);
-    opacNormal(timeElement12, eventElement12, toSaveElement);
-    opacNormal(timeElement13, eventElement13, toSaveElement);
-    opacNormal(timeElement14, eventElement14, toSaveElement);
-    opacNormal(timeElement15, eventElement15, toSaveElement);
-    opacNormal(timeElement16, eventElement16, toSaveElement);
-    opacNormal(timeElement17, eventElement17, toSaveElement);
+    opacNormal(timeElement9, eventElement9, timeminsecElement9);
+    opacNormal(timeElement10, eventElement10, timeminsecElement10);
+    opacNormal(timeElement11, eventElement11, timeminsecElement11);
+    opacNormal(timeElement12, eventElement12, timeminsecElement12);
+    opacNormal(timeElement13, eventElement13, timeminsecElement13);
+    opacNormal(timeElement14, eventElement14, timeminsecElement14);
+    opacNormal(timeElement15, eventElement15, timeminsecElement15);
+    opacNormal(timeElement16, eventElement16, timeminsecElement16);
+    opacNormal(timeElement17, eventElement17, timeminsecElement17);
 
 }
 
 //checks if the time slot is current, if not dim the div
 function timePassed() {
     if (timeNow > timeElement9.value) {
-        opac(timeElement9, eventElement9, toSaveElement);
+        opac(timeElement9, eventElement9, timeminsecElement9);
     }
     if (timeNow > timeElement10.value) {
-        opac(timeElement10, eventElement10, toSaveElement);
+        opac(timeElement10, eventElement10, timeminsecElement10);
     }
     if (timeNow > timeElement11.value) {
-        opac(timeElement11, eventElement11, toSaveElement);
+        opac(timeElement11, eventElement11, timeminsecElement11);
     }
     if (timeNow > timeElement12.value) {
-        opac(timeElement12, eventElement12, toSaveElement);
+        opac(timeElement12, eventElement12, timeminsecElement12);
     }
     if (timeNow > timeElement13.value) {
-        opac(timeElement13, eventElement13, toSaveElement);
+        opac(timeElement13, eventElement13, timeminsecElement13);
     }
     if (timeNow > timeElement14.value) {
-        opac(timeElement14, eventElement14, toSaveElement);
+        opac(timeElement14, eventElement14, timeminsecElement14);
     }
     if (timeNow > timeElement15.value) {
-        opac(timeElement15, eventElement15, toSaveElement);
+        opac(timeElement15, eventElement15, timeminsecElement15);
     }
     if (timeNow > timeElement16.value) {
-        opac(timeElement16, eventElement16, toSaveElement);
+        opac(timeElement16, eventElement16, timeminsecElement16);
     }
     if (timeNow > timeElement17.value) {
-        opac(timeElement17, eventElement17, toSaveElement);
+        opac(timeElement17, eventElement17, timeminsecElement17);
     }
 }
 
 //function that dims the div and id.
-function opac(time, textA, save) {
+function opac(time, textA, timemin) {
     textA.style.backgroundColor = "#D3D3D3";
     textA.style.opacity = 0.3;
     time.style.opacity = 0.3;
-    save.style.opacity = 0.3;
+    timemin.style.opacity = 0.3;
+
 }
 //function that restores the div and id
-function opacNormal(time, textA, save) {
+function opacNormal(time, textA, timemin) {
     textA.style.backgroundColor = "white";
     textA.style.opacity = 1;
     time.style.opacity = 1;
-    save.style.opacity = 1;
+    timemin.style.opacity = 1;
 }
 
 function clearInput() {
@@ -203,4 +226,44 @@ function clearInput() {
     eventElement15.innerHTML = (eventElement15.value = '');
     eventElement16.innerHTML = (eventElement16.value = '');
     eventElement17.innerHTML = (eventElement17.value = '');
+}
+
+function showTime() {
+    switch (timeNow) {
+        case timeElement9:
+            timeminsecElement9.innerHTML = moment().format('LTS');
+            break;
+
+        case timeElement10:
+            timeminsecElement10.innerHTML = moment().format('LTS');
+            break;
+
+        case timeElement11:
+            timeminsecElement11.innerHTML = moment().format('LTS');
+            break;
+
+        case timeElement12:
+            timeminsecElement12.innerHTML = moment().format('LTS');
+            break;
+
+        case timeElement13:
+            timeminsecElement13.innerHTML = moment().format('LTS');
+            break;
+
+        case timeElement14:
+            timeminsecElement14.innerHTML = moment().format('LTS');
+            break;
+
+        case timeElement15:
+            timeminsecElement15.innerHTML = moment().format('LTS');
+            break;
+
+        case timeElement16:
+            timeminsecElement16.innerHTML = moment().format('LTS');
+            break;
+
+        case timeElement17:
+            timeminsecElement17.innerHTML = moment().format('LTS');
+            break;
+    }
 }

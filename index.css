@@ -22,6 +22,8 @@ td {
     height: 80px;
     
 }
+
+
 #auth-image {
     border-radius: 50%;
    
@@ -52,11 +54,13 @@ td {
     border-right: 1px solid #5bc0de;
 }
 
-#toSave {
+#timeminsec9, #timeminsec10, #timeminsec11, #timeminsec12, #timeminsec13,
+    #timeminsec14, #timeminsec15, #timeminsec16, #timeminsec17 {
     
     text-align: left;
     padding: 10px;
     border-left: 1px solid #5bc0de;
+    color: red;
 
 }
 
@@ -66,8 +70,7 @@ td {
     font-weight: 900;
     text-align: center;
     color: #5bc0de;
-    padding: 20px;
-   
+    padding: 20px;  
 }
 
 #previous, #next {
@@ -86,7 +89,6 @@ td {
     width: auto;
     font-size: 20px;
     font-weight: 500;
-
 }
 
 .scrollDate {
@@ -94,6 +96,14 @@ td {
     justify-content: space-between;
     align-items: center;
 }
+
+#current, #savebutton {
+    width: 100%;
+    margin-bottom: 20px;
+    
+}
+
+
 
 
 
