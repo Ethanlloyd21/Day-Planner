@@ -59,6 +59,9 @@ var currentDate = moment().format('LL');
 const dateCons = moment().format('LL');
 dateElement.innerHTML = currentDate;
 console.log(currentDate);
+console.log(dateCons);
+
+
 
 previousElement.addEventListener('click', function () {
 
@@ -72,19 +75,7 @@ previousElement.addEventListener('click', function () {
         dateElement.innerHTML = currentDate;
     }
 
-
-    if (currentDate === moment().format('LL')) {
-        timePassed();
-    }
-    else {
-        checkIfPassed();
-    }
-
-    console.log(currentDate);
-    console.log(currentDate === moment().format('LL'));
-    console.log(currentDate > moment().format('LL'));
-
-
+    dimDiv();
 });
 
 nextElement.addEventListener('click', function () {
@@ -100,17 +91,7 @@ nextElement.addEventListener('click', function () {
 
     }
 
-
-    if (currentDate === moment().format('LL')) {
-        timePassed();
-    }
-    else {
-        checkIfPassed();
-    }
-
-    console.log(currentDate);
-    console.log(currentDate === moment().format('LL'));
-    console.log(currentDate > moment().format('LL'));
+    dimDiv();
 });
 
 
@@ -119,30 +100,56 @@ var timeNow = moment().format('H');
 
 var num = 3;
 console.log(timeNow);
-console.log(timeNow < 10);
-console.log(moment().format('L'));
-console.log(moment().format('L').split('/'));
+
 
 var currentDateArray = moment().format('L').split('/');
-console.log(currentDateArray);
-console.log(currentDate);
 
-if (currentDate === moment().format('LL')) {
-    timePassed();
+console.log(currentDate);
+console.log(dateCons);
+
+timePassed();
+
+
+function dimDiv() {
+    if (currentDate === dateCons) {
+        timePassed();
+    }
+    else if (currentDate > dateCons) {
+        futureDate();
+    }
+    else {
+        pastDate();
+    }
+
+
 }
 
-function checkIfPassed() {
-    if (currentDate < moment().format('LL')) {
-        opac(timeElement9, eventElement9, toSaveElement);
-        opac(timeElement10, eventElement10, toSaveElement);
-        opac(timeElement11, eventElement11, toSaveElement);
-        opac(timeElement12, eventElement12, toSaveElement);
-        opac(timeElement13, eventElement13, toSaveElement);
-        opac(timeElement14, eventElement14, toSaveElement);
-        opac(timeElement15, eventElement15, toSaveElement);
-        opac(timeElement16, eventElement16, toSaveElement);
-        opac(timeElement17, eventElement17, toSaveElement);
-    }
+
+function pastDate() {
+
+    opac(timeElement9, eventElement9, toSaveElement);
+    opac(timeElement10, eventElement10, toSaveElement);
+    opac(timeElement11, eventElement11, toSaveElement);
+    opac(timeElement12, eventElement12, toSaveElement);
+    opac(timeElement13, eventElement13, toSaveElement);
+    opac(timeElement14, eventElement14, toSaveElement);
+    opac(timeElement15, eventElement15, toSaveElement);
+    opac(timeElement16, eventElement16, toSaveElement);
+    opac(timeElement17, eventElement17, toSaveElement);
+
+}
+
+function futureDate() {
+    opacNormal(timeElement9, eventElement9, toSaveElement);
+    opacNormal(timeElement10, eventElement10, toSaveElement);
+    opacNormal(timeElement11, eventElement11, toSaveElement);
+    opacNormal(timeElement12, eventElement12, toSaveElement);
+    opacNormal(timeElement13, eventElement13, toSaveElement);
+    opacNormal(timeElement14, eventElement14, toSaveElement);
+    opacNormal(timeElement15, eventElement15, toSaveElement);
+    opacNormal(timeElement16, eventElement16, toSaveElement);
+    opacNormal(timeElement17, eventElement17, toSaveElement);
+
 }
 
 function timePassed() {
@@ -181,4 +188,11 @@ function opac(time, textA, save) {
     textA.style.opacity = 0.3;
     time.style.opacity = 0.3;
     save.style.opacity = 0.3;
+}
+
+function opacNormal(time, textA, save) {
+    textA.style.backgroundColor = "white";
+    textA.style.opacity = 1;
+    time.style.opacity = 1;
+    save.style.opacity = 1;
 }
