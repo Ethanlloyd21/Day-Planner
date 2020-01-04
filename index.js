@@ -41,11 +41,6 @@ var nextElement = document.getElementById('next');
 var dateNow = document.getElementById('current');
 var saveNow = document.getElementById('savebutton');
 
-//button to go back to the current day
-dateNow.addEventListener('click', function () {
-    location.reload()
-});
-
 //prints out the intro and the arrow buttons
 introElement.innerHTML = "Work Day Planner";
 previousElement.innerHTML = "&#8249;";
@@ -89,6 +84,8 @@ timePassed();
 
 
 
+
+
 //previous button
 previousElement.addEventListener('click', function () {
     //subtracts dates
@@ -104,6 +101,21 @@ previousElement.addEventListener('click', function () {
     clearInput();
     //dims the div if the date is less than the current date
     dimDiv();
+    var boolean = false;
+    if (currentDate in localStorage) {
+        boolean = true;
+        localStorage.getItem(currentDate);
+        eventElement9.innerHTML = nine;
+        eventElement10.innerHTML = ten;
+        eventElement11.innerHTML = eleven;
+        eventElement12.innerHTML = twelve;
+        eventElement13.innerHTML = thirteen;
+        eventElement14.innerHTML = fourteen;
+        eventElement15.innerHTML = fifthteem;
+        eventElement16.innerHTML = sixteen;
+        eventElement17.innerHTML = seventeen;
+    }
+    console.log(boolean);
 });
 
 //next button
@@ -121,8 +133,46 @@ nextElement.addEventListener('click', function () {
     clearInput();
     //dims the div if the date is less than the current date
     dimDiv();
+    console.log(localStorage.getItem(currentDate));
+    var boolean = false;
+    if (currentDate in localStorage) {
+        boolean = true;
+        var get = JSON.parse(localStorage.getItem(currentDate));
+
+        eventElement9.innerHTML = get.nine;
+        eventElement10.innerHTML = get.ten;
+        eventElement11.innerHTML = get.eleven;
+        eventElement12.innerHTML = get.twelve;
+        eventElement13.innerHTML = get.thirteen;
+        eventElement14.innerHTML = get.fourteen;
+        eventElement15.innerHTML = get.fifthteem;
+        eventElement16.innerHTML = get.sixteen;
+        eventElement17.innerHTML = get.seventeen;
+    }
+    console.log(boolean);
 });
 
+//button to go back to the current day
+dateNow.addEventListener('click', function () {
+    location.reload()
+});
+
+saveNow.addEventListener('click', function () {
+
+    var event = {
+        nine: eventElement9.value,
+        ten: eventElement10.value,
+        eleven: eventElement11.value,
+        twelve: eventElement12.value,
+        thirteen: eventElement13.value,
+        fourteen: eventElement14.value,
+        fifthteem: eventElement15.value,
+        sixteen: eventElement16.value,
+        seventeen: eventElement17.value
+    }
+    console.log(event);
+    localStorage.setItem(currentDate, JSON.stringify(event));
+})
 
 var currentDateArray = moment().format('L').split('/');
 
