@@ -11,9 +11,11 @@ The app displays standard business hours (9 a.m. to 5 p.m.). Each time slot repr
 * Current Date button
 * Current time
 
-Clicking on the save button will store the time and user input in localStorage. In order for the user not to lose unsave data, the input data (text area) will contain unsave data unless the save button or the refresh (current date or home) button is pressed. Even if the arrow buttons (previous or next date) are pressed, the unsave data will remain on the text area. 
+Clicking on the save button will store the time and user input in localStorage. 
+### In order for the user not to lose unsave data, the input data (text area) will contain unsave data unless the save button or the refresh (current date or home) button is pressed. Even if the arrow buttons (previous or next date) are pressed, the unsave data will remain on the text area. 
 
-Each hour is color coded to reflect whether the time slot is in the past or the future. The present time slot will show the current time on the row beside the field text area/ input field to indicate and guide the user of the current time. This will change depending on the time of day.
+Each hour is color coded to reflect whether the time slot is in the past or the future. 
+### The present time slot will show the current time on the row beside the field text area/ input field to indicate and guide the user of the current time. This will change depending on the time of day.
 
 The application uses a third party application (Moment.js) library to work with date and times. 
 
@@ -31,5 +33,5 @@ so that I can manage my time effectively.
 Poor time management can result in missed meetings and deadlines or create the appearance of unprofessionalism. A daily planner allows employees to see their day at a glance, schedule time effectively, and improve productivity.
 
 # Bugs in Moment.Js
-* Moment.Js issue/ bug - dates between Jan. 10, 2020 to Feb. 29, 2020 for some reason the code states that it is less than the current date (Jan. 5, 2020). I ran some tests using console.log to test if the current date (Jan. 5, 2020) is greater than the future dates. All dates above Jan. 5, 2020 returned "TRUE", but not the dates between Jan. 10 - Feb. 29, 2020. 
+### * Moment.Js issue/ bug - dates between Jan. 10, 2020 to Feb. 29, 2020 for some reason the code states that it is less than the current date (Jan. 5, 2020). I ran some tests using console.log to test if the current date (Jan. 5, 2020) is greater than the future dates. All dates above Jan. 5, 2020 returned "TRUE", but not the dates between Jan. 10 - Feb. 29, 2020. 
 # that is weird!.....
