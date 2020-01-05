@@ -81,9 +81,10 @@ dateElement.innerHTML = currentDate;
 var timeNow = moment().format('H');
 
 //function to check if the time had pass the hour, if so dim the div.
-timePassed();
+dimDiv();
 //check the localStorage of the current date.
 renderEvent(currentDate);
+
 
 
 
@@ -93,6 +94,7 @@ previousElement.addEventListener('click', function () {
     if (currentDate === moment().format('LL')) {
         currentDate = moment().subtract(1, 'days').format('LL');
         dateElement.innerHTML = currentDate;
+
     }
     else {
         currentDate = moment(currentDate).subtract(1, 'days').format('LL');
@@ -156,17 +158,22 @@ saveNow.addEventListener('click', function () {
 //dims the div on the past time and date
 function dimDiv() {
     if (currentDate === dateCons) { //if the date is today
+        futureDate();
         timePassed();
         showTime();
+
     }
     else if (currentDate > dateCons) { //if the date is in the future
         futureDate();
+        clearTime()
+
     }
     else if (currentDate < dateCons) {
         pastDate();
+        clearTime();
     }
     else {
-        futureDate();
+
     }
 
 }
@@ -305,5 +312,19 @@ function renderEvent(date) {
         eventElement16.innerHTML = "";
         eventElement17.innerHTML = "";
     }
+}
+
+function clearTime() {
+
+    timeminsecElement9.innerHTML = "";
+    timeminsecElement10.innerHTML = "";
+    timeminsecElement11.innerHTML = "";
+    timeminsecElement12.innerHTML = "";
+    timeminsecElement13.innerHTML = "";
+    timeminsecElement14.innerHTML = "";
+    timeminsecElement15.innerHTML = "";
+    timeminsecElement16.innerHTML = "";
+    timeminsecElement17.innerHTML = "";
+
 }
 
