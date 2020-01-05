@@ -121,7 +121,6 @@ nextElement.addEventListener('click', function () {
         dateElement.innerHTML = currentDate;
 
     }
-    console.log(currentDate > dateCons);
     //dims the div if the date is less than the current date
     dimDiv();
     //checks the localStorage
