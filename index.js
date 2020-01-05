@@ -248,20 +248,6 @@ function opacNormal(time, textA, timemin) {
     timemin.style.opacity = 1;
 }
 
-//clears the textArea
-function clearInput() {
-    eventElement9.innerHTML = (eventElement9.value = '');
-    eventElement10.innerHTML = (eventElement10.value = '');
-    eventElement11.innerHTML = (eventElement11.value = '');
-    eventElement12.innerHTML = (eventElement12.value = '');
-    eventElement13.innerHTML = (eventElement13.value = '');
-    eventElement14.innerHTML = (eventElement14.value = '');
-    eventElement15.innerHTML = (eventElement15.value = '');
-    eventElement16.innerHTML = (eventElement16.value = '');
-    eventElement17.innerHTML = (eventElement17.value = '');
-}
-
-
 //function to show the current time beside the time slot on the table
 function showTime() {
     if (parseInt(timeNow) === timeElement9.value) {
