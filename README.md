@@ -12,7 +12,9 @@ The app displays standard business hours (9 a.m. to 5 p.m.). Each time slot repr
 * Current time
 
 Clicking on the save button will store the time and user input in localStorage.
+
 Each hour is color coded to reflect whether the time slot is in the past or the future. The present time slot will show the current time on the row beside the time slot. This will change depending on the time of day.
+
 The application uses a third party application (Moment.js) library to work with date and times. 
 
 ![](/images/responsive.PNG)
