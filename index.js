@@ -41,6 +41,7 @@ var nextElement = document.getElementById('next');
 var dateNow = document.getElementById('current');
 var saveNow = document.getElementById('savebutton');
 
+
 //prints out the intro and the arrow buttons
 introElement.innerHTML = "Work Day Planner";
 previousElement.innerHTML = "&#8249;";
@@ -70,19 +71,17 @@ timeElement17.innerHTML = timeElement17.value - 12 + "pm";
 //variable for the current date
 var currentDate = moment().format('LL');
 //variable constant for the current date. This constant never change through out the code
-const dateCons = moment().format('LL');
+var dateCons = moment().format('LL');
 //prints the current date on the date id.
 dateElement.innerHTML = currentDate;
 
 //variable for the current time
 var timeNow = moment().format('H');
 
-clearInput();
-
 //function to check if the time had pass the hour, if so dim the div.
 timePassed();
-
-
+//check the localStorage of the current date.
+renderEvent(currentDate);
 
 
 
@@ -97,25 +96,14 @@ previousElement.addEventListener('click', function () {
         currentDate = moment(currentDate).subtract(1, 'days').format('LL');
         dateElement.innerHTML = currentDate;
     }
-    //clear text on the textArea
-    clearInput();
+
+
     //dims the div if the date is less than the current date
     dimDiv();
-    var boolean = false;
-    if (currentDate in localStorage) {
-        boolean = true;
-        localStorage.getItem(currentDate);
-        eventElement9.innerHTML = nine;
-        eventElement10.innerHTML = ten;
-        eventElement11.innerHTML = eleven;
-        eventElement12.innerHTML = twelve;
-        eventElement13.innerHTML = thirteen;
-        eventElement14.innerHTML = fourteen;
-        eventElement15.innerHTML = fifthteem;
-        eventElement16.innerHTML = sixteen;
-        eventElement17.innerHTML = seventeen;
-    }
-    console.log(boolean);
+    //checks the localStorage 
+    renderEvent(currentDate);
+
+
 });
 
 //next button
@@ -124,40 +112,28 @@ nextElement.addEventListener('click', function () {
     if (currentDate === moment().format('LL')) {
         currentDate = moment().add(1, 'days').format('LL');
         dateElement.innerHTML = currentDate;
+
     }
     else {
         currentDate = moment(currentDate).add(1, 'days').format('LL');
         dateElement.innerHTML = currentDate;
+
     }
-    //clear text on the textArea
-    clearInput();
+    console.log(currentDate > dateCons);
     //dims the div if the date is less than the current date
     dimDiv();
-    console.log(localStorage.getItem(currentDate));
-    var boolean = false;
-    if (currentDate in localStorage) {
-        boolean = true;
-        var get = JSON.parse(localStorage.getItem(currentDate));
-
-        eventElement9.innerHTML = get.nine;
-        eventElement10.innerHTML = get.ten;
-        eventElement11.innerHTML = get.eleven;
-        eventElement12.innerHTML = get.twelve;
-        eventElement13.innerHTML = get.thirteen;
-        eventElement14.innerHTML = get.fourteen;
-        eventElement15.innerHTML = get.fifthteem;
-        eventElement16.innerHTML = get.sixteen;
-        eventElement17.innerHTML = get.seventeen;
-    }
-    console.log(boolean);
+    //checks the localStorage
+    renderEvent(currentDate);
 });
 
-//button to go back to the current day
+//button to go to the current day
 dateNow.addEventListener('click', function () {
     location.reload()
 });
-
+//save button to save the event/ notes.
 saveNow.addEventListener('click', function () {
+
+    localStorage.removeItem(currentDate);
 
     var event = {
         nine: eventElement9.value,
@@ -170,24 +146,28 @@ saveNow.addEventListener('click', function () {
         sixteen: eventElement16.value,
         seventeen: eventElement17.value
     }
-    console.log(event);
+    //set items on the localStorage
     localStorage.setItem(currentDate, JSON.stringify(event));
-})
-
-var currentDateArray = moment().format('L').split('/');
+    //refresh the page
+    location.reload();
+});
 
 //dims the div on the past time and date
 function dimDiv() {
-    if (currentDate === dateCons) {
+    if (currentDate === dateCons) { //if the date is today
         timePassed();
         showTime();
     }
-    else if (currentDate > dateCons) {
+    else if (currentDate > dateCons) { //if the date is in the future
         futureDate();
     }
-    else {
+    else if (currentDate < dateCons) {
         pastDate();
     }
+    else {
+        futureDate();
+    }
+
 }
 
 //dim previous dates
@@ -221,31 +201,31 @@ function futureDate() {
 
 //checks if the time slot is current, if not dim the div
 function timePassed() {
-    if (timeNow > timeElement9.value) {
+    if (parseInt(timeNow) > timeElement9.value) {
         opac(timeElement9, eventElement9, timeminsecElement9);
     }
-    if (timeNow > timeElement10.value) {
+    if (parseInt(timeNow) > timeElement10.value) {
         opac(timeElement10, eventElement10, timeminsecElement10);
     }
-    if (timeNow > timeElement11.value) {
+    if (parseInt(timeNow) > timeElement11.value) {
         opac(timeElement11, eventElement11, timeminsecElement11);
     }
-    if (timeNow > timeElement12.value) {
+    if (parseInt(timeNow) > timeElement12.value) {
         opac(timeElement12, eventElement12, timeminsecElement12);
     }
-    if (timeNow > timeElement13.value) {
+    if (parseInt(timeNow) > timeElement13.value) {
         opac(timeElement13, eventElement13, timeminsecElement13);
     }
-    if (timeNow > timeElement14.value) {
+    if (parseInt(timeNow) > timeElement14.value) {
         opac(timeElement14, eventElement14, timeminsecElement14);
     }
-    if (timeNow > timeElement15.value) {
+    if (parseInt(timeNow) > timeElement15.value) {
         opac(timeElement15, eventElement15, timeminsecElement15);
     }
-    if (timeNow > timeElement16.value) {
+    if (parseInt(timeNow) > timeElement16.value) {
         opac(timeElement16, eventElement16, timeminsecElement16);
     }
-    if (timeNow > timeElement17.value) {
+    if (parseInt(timeNow) > timeElement17.value) {
         opac(timeElement17, eventElement17, timeminsecElement17);
     }
 }
@@ -266,6 +246,7 @@ function opacNormal(time, textA, timemin) {
     timemin.style.opacity = 1;
 }
 
+//clears the textArea
 function clearInput() {
     eventElement9.innerHTML = (eventElement9.value = '');
     eventElement10.innerHTML = (eventElement10.value = '');
@@ -278,42 +259,64 @@ function clearInput() {
     eventElement17.innerHTML = (eventElement17.value = '');
 }
 
+
+//function to show the current time beside the time slot on the table
 function showTime() {
-    switch (timeNow) {
-        case timeElement9:
-            timeminsecElement9.innerHTML = moment().format('LTS');
-            break;
-
-        case timeElement10:
-            timeminsecElement10.innerHTML = moment().format('LTS');
-            break;
-
-        case timeElement11:
-            timeminsecElement11.innerHTML = moment().format('LTS');
-            break;
-
-        case timeElement12:
-            timeminsecElement12.innerHTML = moment().format('LTS');
-            break;
-
-        case timeElement13:
-            timeminsecElement13.innerHTML = moment().format('LTS');
-            break;
-
-        case timeElement14:
-            timeminsecElement14.innerHTML = moment().format('LTS');
-            break;
-
-        case timeElement15:
-            timeminsecElement15.innerHTML = moment().format('LTS');
-            break;
-
-        case timeElement16:
-            timeminsecElement16.innerHTML = moment().format('LTS');
-            break;
-
-        case timeElement17:
-            timeminsecElement17.innerHTML = moment().format('LTS');
-            break;
+    if (parseInt(timeNow) === timeElement9.value) {
+        timeminsecElement9.innerHTML = moment().format('LT');
+    }
+    if (parseInt(timeNow) === timeElement10.value) {
+        timeminsecElement10.innerHTML = moment().format('LT');
+    }
+    if (parseInt(timeNow) === timeElement11.value) {
+        timeminsecElement11.innerHTML = moment().format('LT');
+    }
+    if (parseInt(timeNow) === timeElement12.value) {
+        timeminsecElement12.innerHTML = moment().format('LT');
+    }
+    if (parseInt(timeNow) === timeElement13.value) {
+        timeminsecElement13.innerHTML = moment().format('LT');
+    }
+    if (parseInt(timeNow) === timeElement14.value) {
+        timeminsecElement14.innerHTML = moment().format('LT');
+    }
+    if (parseInt(timeNow) === timeElement15.value) {
+        timeminsecElement15.innerHTML = moment().format('LT');
+    }
+    if (parseInt(timeNow) === timeElement16.value) {
+        timeminsecElement16.innerHTML = moment().format('LT');
+    }
+    if (parseInt(timeNow) === timeElement17.value) {
+        timeminsecElement17.innerHTML = moment().format('LT');
     }
 }
+
+//get item on the localStorage and print in the textArea
+function renderEvent(date) {
+    if (currentDate in localStorage) {
+
+        var get = JSON.parse(localStorage.getItem(currentDate));
+
+        eventElement9.innerHTML = get.nine;
+        eventElement10.innerHTML = get.ten;
+        eventElement11.innerHTML = get.eleven;
+        eventElement12.innerHTML = get.twelve;
+        eventElement13.innerHTML = get.thirteen;
+        eventElement14.innerHTML = get.fourteen;
+        eventElement15.innerHTML = get.fifthteem;
+        eventElement16.innerHTML = get.sixteen;
+        eventElement17.innerHTML = get.seventeen;
+    }
+    else {
+        eventElement9.innerHTML = "";
+        eventElement10.innerHTML = "";
+        eventElement11.innerHTML = "";
+        eventElement12.innerHTML = "";
+        eventElement13.innerHTML = "";
+        eventElement14.innerHTML = "";
+        eventElement15.innerHTML = "";
+        eventElement16.innerHTML = "";
+        eventElement17.innerHTML = "";
+    }
+}
+
