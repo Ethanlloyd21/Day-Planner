@@ -66,11 +66,18 @@ td {
 
 #intro {
     widows: 100%;
-    font-size: 40px;
+    font-size: 50px;
     font-weight: 900;
     text-align: center;
     color: #5bc0de;
-    padding: 20px;  
+    padding-top: 20px;  
+}
+#simple {
+    color: #DE795B;
+    widows: 100%;
+    font-size: 15px;
+    text-align: center;
+    padding-bottom: 20px;
 }
 
 #previous, #next {

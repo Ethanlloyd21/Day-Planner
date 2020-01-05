@@ -1,5 +1,6 @@
 //variable for the intro and date
 var introElement = document.getElementById('intro');
+var intro2Element = document.getElementById('simple');
 var dateElement = document.getElementById('date');
 //variables for the timeFrame 
 var timeElement9 = document.getElementById('timeFrame-9');
@@ -44,6 +45,7 @@ var saveNow = document.getElementById('savebutton');
 
 //prints out the intro and the arrow buttons
 introElement.innerHTML = "Work Day Planner";
+intro2Element.innerHTML = "A simple calendar app for scheduling your work day"
 previousElement.innerHTML = "&#8249;";
 nextElement.innerHTML = "&#8250;";
 //gives value on each of the timeFrame
