@@ -38,3 +38,6 @@ Because of the time constraints, this project was rushed. I was planning to add 
 # Bugs in Moment.Js
 ### * Moment.Js issue/ bug - dates between Jan. 10, 2020 to Feb. 29, 2020 for some reason the code states that it is less than the current date (Jan. 5, 2020). I ran some tests using console.log to test if the current date (Jan. 5, 2020) is less than the future dates. All dates above Jan. 5, 2020 returned "TRUE", but not the dates between Jan. 10 - Feb. 29, 2020. 
 # that is weird!.....
+
+## Author
+* Lloyd Marcelino, 2020
